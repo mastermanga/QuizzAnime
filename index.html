@@ -4,27 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mini-Jeux</title>
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png" />
-  <link rel="stylesheet" href="css/menu.css" />
-  <link rel="stylesheet" href="css/game.css" />
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
 </head>
 <body>
 
   <!-- === MENU PRINCIPAL === -->
   <div id="menu-screen">
     <h1>Bienvenue !</h1>
-    <button onclick="launchGame('ranking-game')">Anime Blind Ranking</button>
+    <button onclick="navigateTo('jeu')">Anime Blind Ranking</button>
     <button onclick="alert('À venir')">Autre jeu (bientôt)</button>
   </div>
 
   <!-- === CLASSEMENT DES ANIMES === -->
-  <div id="ranking-game">
+  <div id="ranking-game" style="display: none">
+    <button id="back-btn" onclick="navigateTo('menu')">Retour</button>
+    <h1 id="ranking-title">Anime Blind Ranking</h1>
+
     <div class="ranking-container">
       <h2>Récapitulatif du Ranking</h2>
       <ul id="ranking-list" class="anime-list"></ul>
     </div>
-    <button id="back-btn" onclick="backToMenu()">Retour</button>
-    <h1 id="ranking-title">Anime Blind Ranking</h1>
 
     <div class="anime-container" id="anime-container">
       <div class="anime-item" id="anime-item">
@@ -34,16 +35,12 @@
 
       <div id="rank-section">
         <div class="rank-button">
-          <button id="rank-1" onclick="assignRank(1)">1</button>
-          <button id="rank-2" onclick="assignRank(2)">2</button>
-          <button id="rank-3" onclick="assignRank(3)">3</button>
-          <button id="rank-4" onclick="assignRank(4)">4</button>
-          <button id="rank-5" onclick="assignRank(5)">5</button>
-          <button id="rank-6" onclick="assignRank(6)">6</button>
-          <button id="rank-7" onclick="assignRank(7)">7</button>
-          <button id="rank-8" onclick="assignRank(8)">8</button>
-          <button id="rank-9" onclick="assignRank(9)">9</button>
-          <button id="rank-10" onclick="assignRank(10)">10</button>
+          <!-- Boutons de rang -->
+          <script>
+            for (let i = 1; i <= 10; i++) {
+              document.write(`<button id="rank-${i}" onclick="assignRank(${i})">${i}</button>`);
+            }
+          </script>
         </div>
       </div>
 
@@ -52,7 +49,8 @@
       </div>
     </div>
   </div>
-<script src="js/menu.js"></script>
-<script src="js/game.js"></script>
+
+  <script src="js/router.js"></script>
+  <script src="js/game.js"></script>
 </body>
 </html>
