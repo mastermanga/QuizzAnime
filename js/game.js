@@ -5,7 +5,7 @@ let selectedAnimes = [];
 
 async function loadAnimes() {
   try {
-    const response = await fetch('animes.json');
+    const response = await fetch('data/animes.json');
     if (!response.ok) throw new Error('Fichier introuvable');
     animeList = await response.json();
   } catch (error) {
